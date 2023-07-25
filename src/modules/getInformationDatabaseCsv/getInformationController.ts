@@ -1,20 +1,13 @@
 import { Request, Response, response } from 'express';
-import { SetInformationFileUseCase } from './updateFileUseCase';
-import { setInformationFileUseCase } from '.';
-import { CheckSomma } from "./dataBaseHelp/checkSomma"; 
+import { GetInformationDatabaseUserService } from './getInformationUseService';
 
-export class SetInformationUpdate{
-    constructor(setInformationFileUseCase: SetInformationFileUseCase){}
+export class GetInformationDatabaseController{
+    constructor(getInformationDatabaseUserService: GetInformationDatabaseUserService){}
     async handle(request: Request, response: Response): Promise<Response>{
-        const csvText: any = request.file?.buffer.toString("utf-8")
+        
         
         try{
                
-        const result = await setInformationFileUseCase.execute(csvText);
-        
-        if(!result){
-            throw new Error('Conflict');
-        }
         
         return response.status(200).json({ message: 'Upload de arquivo concluído com sucesso.' }); 
         }catch(error){

@@ -1,5 +1,6 @@
 import { userDTO } from "../../DTO/userDTO";
 import { client } from "../../database/client";
+import { RepositoryCsv } from "../../repositories/prisma/prismaCsvRepository";
 import { TransforToArray } from "./dataBaseHelp/TransformToArray"
 import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvAlreadyexists"
 
@@ -19,18 +20,9 @@ export class SetInformationFileUseCase{
         }
 
         //insert into bank
-        for await(let {name, city, country, favorite_sport} of arrayUser){
-            await client.user.create({
-                data:{
-                    name,
-                    city,
-                    country,
-                    favorite_sport
-                }
-            })
-        }
+        const fileCsvDatabase = await new RepositoryCsv().createFileCsvDatabase(arrayUser)
         
-      return true
+        return fileCsvDatabase
         
     }
 }
