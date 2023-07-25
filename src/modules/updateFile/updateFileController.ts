@@ -1,16 +1,15 @@
 import { Request, Response, response } from 'express';
 import { SetInformationFileUseCase } from './updateFileUseCase';
-import { setInformationFileUseCase } from '.';
 import { CheckSomma } from "./dataBaseHelp/checkSomma"; 
 
 export class SetInformationUpdate{
-    constructor(setInformationFileUseCase: SetInformationFileUseCase){}
+    constructor(private setInformationFileUseCase: SetInformationFileUseCase){}
     async handle(request: Request, response: Response): Promise<Response>{
         const csvText: any = request.file?.buffer.toString("utf-8")
         
         try{
                
-        const result = await setInformationFileUseCase.execute(csvText);
+        const result = await this.setInformationFileUseCase.execute(csvText);
         
         if(!result){
             throw new Error('Conflict');
