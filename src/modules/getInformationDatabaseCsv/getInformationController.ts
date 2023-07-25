@@ -7,7 +7,7 @@ export class GetInformationDatabaseController{
         
         try{
              const result = await this.getInformationDatabaseUserService.execute(request.query) 
-        
+                
         return response.status(200).send(result)
         }catch(error){
             return response.status(400).json({ message: 'Invalid paramns.' });

@@ -1,7 +1,7 @@
 import { userDTO } from "../../DTO/userDTO";
 import { client } from "../../database/client";
 
-export class RepositoryCsv{
+export class RepositoryCreateCsv{
     constructor(){}
     async createFileCsvDatabase(csvArray: userDTO[]){
         for await(let {name, city, country, favorite_sport} of csvArray){
