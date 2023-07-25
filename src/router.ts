@@ -13,8 +13,10 @@ router.post("/updatefile", multerConfig.single("file"),(async (req, res) => {
 }))
 
 router.get('/', async (req, res) => {
-    const searchTerm: any = req.query.q; // Use req.query para capturar os parâmetros da URL
-    return getInformationDatabaseController.handle(searchTerm, res);
+    return getInformationDatabaseController.handle(req, res);
   });
 
+  router.get('/info/', async (req, res) => {
+    return  getInformationDatabaseController.handle(req, res);
+  });
 export { router }

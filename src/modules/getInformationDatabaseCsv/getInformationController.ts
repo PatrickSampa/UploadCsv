@@ -4,8 +4,9 @@ import { GetInformationDatabaseUserService } from './getInformationUseService';
 export class GetInformationDatabaseController{
     constructor(private getInformationDatabaseUserService: GetInformationDatabaseUserService){}
     async handle(request: Request, response: Response): Promise<Response>{
+        
         try{
-             const result = await this.getInformationDatabaseUserService.execute(request) 
+             const result = await this.getInformationDatabaseUserService.execute(request.query) 
         
         return response.status(200).send(result)
         }catch(error){

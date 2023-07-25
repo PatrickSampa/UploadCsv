@@ -17,6 +17,10 @@ export class SearchTablePrisma{
         }
     }
 
+    async searchOneParameter(){
+        
+    }
+
 
 
 }
