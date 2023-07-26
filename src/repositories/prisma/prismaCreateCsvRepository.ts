@@ -17,9 +17,14 @@ export class RepositoryCreateCsv{
         return this.showAll();
     }
 
+
+
+
     async showAll(){
         return await client.user.findMany();
     }
+
+
 
 
 }

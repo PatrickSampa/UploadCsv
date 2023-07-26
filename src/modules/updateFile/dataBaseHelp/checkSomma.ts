@@ -1,5 +1,3 @@
-import { Readable } from 'stream';
-import readline from 'readline';
 
 export async function CheckSomma(csv: any): Promise<boolean>{
     const lines = csv.split('\n');

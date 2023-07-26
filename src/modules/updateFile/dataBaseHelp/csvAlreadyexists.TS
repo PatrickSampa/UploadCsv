@@ -5,7 +5,7 @@ export async function CheckCsvAlreadyExists(users: userDTO[]): Promise<boolean>{
     const resultUser = await client.user.findMany();
 
     if(users.length == resultUser.length){
-        const saoIguais = users.every((obj1, index) => {
+        const equals = users.every((obj1, index) => {
             const obj2 = resultUser[index];
           
             return (
@@ -16,7 +16,7 @@ export async function CheckCsvAlreadyExists(users: userDTO[]): Promise<boolean>{
             );
           });
 
-          if(saoIguais){
+          if(equals){
             return false
           }
         

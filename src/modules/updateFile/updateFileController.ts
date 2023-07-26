@@ -1,6 +1,6 @@
 import { Request, Response, response } from 'express';
 import { SetInformationFileUseCase } from './updateFileUseCase';
-import { CheckSomma } from "./dataBaseHelp/checkSomma"; 
+
 
 export class SetInformationUpdate{
     constructor(private setInformationFileUseCase: SetInformationFileUseCase){}
@@ -21,8 +21,6 @@ export class SetInformationUpdate{
                 const errorMessage = error.message || 'Erro undefined';
                 if(errorMessage == "Conflict"){
                     return response.status(409).json({ message: 'REPEATED CSV.' });
-                }else if(errorMessage == "Not Acceptable"){
-                    return response.status(406).json({ message: 'INVALID FORMAT CSV.' });
                 }
                 
             }

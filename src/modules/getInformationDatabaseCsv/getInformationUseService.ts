@@ -6,7 +6,6 @@ export class GetInformationDatabaseUserService{
     constructor(){}
 
     async execute(params: any){
-
         if(params['q'] && params['name']){
             if(params['q'] == 'name'){
                 let result = await new SearchTablePrisma().searchByParameterName();
@@ -41,8 +40,17 @@ export class GetInformationDatabaseUserService{
          throw new Error();   
            
         }else{
-            const InfoTable = await new SearchTablePrisma().searchByParameter(params['q'])
-            return InfoTable
+            if(params['q'] == "name"){
+                return await new SearchTablePrisma().searchByParameterName();
+            }else if(params['q'] == "city"){
+                return await new SearchTablePrisma().searchByParameterCity();
+            }else if(params['q'] == "country"){
+                return await new SearchTablePrisma().searchByParameterCountry();
+            }else if(params['q'] == "favorite_sport"){
+                return await new SearchTablePrisma().searchByParameterFavority();
+            }
+            throw new Error();
+            
         }
 
         

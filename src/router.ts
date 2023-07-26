@@ -26,10 +26,11 @@ router.get('/', async (req, res) => {
   });
 
 
- 
+  
+
   //Bonus
   router.delete('/clear', async (req, res) => {
-     await new ClearDataBase().DeleteAll()
+     const deleteTableSucessull =  await new ClearDataBase().DeleteAll()
      res.status(200).send("Deleted Data")
   });
 
