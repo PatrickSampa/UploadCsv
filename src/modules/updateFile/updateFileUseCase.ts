@@ -1,7 +1,8 @@
 import { userDTO } from "../../DTO/userDTO";
 import { RepositoryCreateCsv } from "../../repositories/prisma/prismaCreateCsvRepository";
 import { TransforToArray } from "./dataBaseHelp/TransformToArray"
-import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvAlreadyExists";
+import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvExists";
+
 
 
 
