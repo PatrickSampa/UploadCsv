@@ -41,4 +41,12 @@ $ npm install
    ```bash
 $ npm run test
 ```   
+
+
+
+## Docker 
+
+    RUN: docker build -t uploud:1.0.0 .
+    RUN: docker run -d -p 3000:3000 uploud:1.0.0
+
     
