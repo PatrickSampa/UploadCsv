@@ -8,6 +8,10 @@
 
 ```bash
 $ npm install
+
+OR
+
+$ yarn dev
 ```
 
 
@@ -40,6 +44,10 @@ $ npm install
 
    ```bash
 $ npm run test
+
+OR
+
+$ yarn test
 ```   
 
 
