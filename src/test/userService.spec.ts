@@ -38,22 +38,22 @@ describe("Check the return data from the database", () =>{
 
     it("check if the information exists, but for that you need to pass the information column and the information included in the column", async () => {
         const info = {q: 'name', name: 'John Doe'}
-        const verifyData =  new GetInformationDatabaseUserService().execute(info);
+        const verifyData = await  new GetInformationDatabaseUserService().execute(info);
 
-        (await verifyData).forEach((element: any) => {
-            expect(element).toHaveProperty('id');
-            expect(element).toHaveProperty('name');
-            expect(element).toHaveProperty('city');
-            expect(element).toHaveProperty('country');
-            expect(element).toHaveProperty('favorite_sport');
+        
+            expect(verifyData).toHaveProperty('id');
+            expect(verifyData).toHaveProperty('name');
+            expect(verifyData).toHaveProperty('city');
+            expect(verifyData).toHaveProperty('country');
+            expect(verifyData).toHaveProperty('favorite_sport');
         
             // Check if the type of each property is string
-            expect(typeof element.id).toBe('string');
-            expect(typeof element.name).toBe('string');
-            expect(typeof element.city).toBe('string');
-            expect(typeof element.country).toBe('string');
-            expect(typeof element.favorite_sport).toBe('string');
-          });
+            expect(typeof verifyData.id).toBe('string');
+            expect(typeof verifyData.name).toBe('string');
+            expect(typeof verifyData.city).toBe('string');
+            expect(typeof verifyData.country).toBe('string');
+            expect(typeof verifyData.favorite_sport).toBe('string');
+          
 
     })
 

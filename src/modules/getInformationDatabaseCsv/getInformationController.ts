@@ -10,6 +10,14 @@ export class GetInformationDatabaseController{
                 
         return response.status(200).send(result)
         }catch(error){
+            if(error instanceof Error){
+                const errorMessage = error.message || 'Erro undefined';
+                if(errorMessage == "DatabaseEmpity"){
+                    return response.status(409).json({ message: 'DatabaseEmpity.' });
+                }
+                
+            }
+
             return response.status(400).json({ message: 'Invalid paramns.' });
             
         }

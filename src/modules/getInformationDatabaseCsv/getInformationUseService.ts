@@ -6,6 +6,10 @@ import { SeachLine } from "./helpInformation/searchLineInTable";
 export class GetInformationDatabaseUserService{
     constructor(){}
     async execute(params: any){
+        if((await new RepositoryCreateCsv().showAll()).length <= 0){
+            throw new Error("DatabaseEmpity"); 
+        }
+        
         if(params['q'] && params['name']){
             if(params['q'] == 'name'){
                 let result = await new SearchTablePrisma().searchByParameterName();
