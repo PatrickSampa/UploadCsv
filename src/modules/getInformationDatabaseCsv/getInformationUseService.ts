@@ -1,31 +1,35 @@
 import { RepositoryCreateCsv } from "../../repositories/prisma/prismaCreateCsvRepository";
 import { SearchTablePrisma } from "../../repositories/prisma/prismaSearchTable";
+import { SeachLine } from "./helpInformation/searchLineInTable";
 
 
 export class GetInformationDatabaseUserService{
     constructor(){}
-
     async execute(params: any){
         if(params['q'] && params['name']){
             if(params['q'] == 'name'){
                 let result = await new SearchTablePrisma().searchByParameterName();
                 for await (let line of result){
                     if((line.name).toLowerCase().split(' ').join('') == (params['name']).toLowerCase().split(' ').join('')){
-                        return new RepositoryCreateCsv().showAll()
+                        const ArrayData = (await new RepositoryCreateCsv().showAll())
+                        return await SeachLine(ArrayData,params['name'], params['q'])
+                        
                     }
                 }
             }else if(params['q'] == 'city'){
                 let result = await new SearchTablePrisma().searchByParameterCity();
                 for await (let line of result){
                     if((line.city).toLowerCase().split(' ').join('') == (params['name']).toLowerCase().split(' ').join('')){
-                        return new RepositoryCreateCsv().showAll()
+                        const ArrayData = (await new RepositoryCreateCsv().showAll())
+                        return await SeachLine(ArrayData,params['name'], params['q'])
                     }
                 }
             }else if(params['q'] == 'country'){
                 let result = await new SearchTablePrisma().searchByParameterCountry();
                 for await (let line of result){
                     if((line.country).toLowerCase().split(' ').join('') == (params['name']).toLowerCase().split(' ').join('')){
-                        return new RepositoryCreateCsv().showAll()
+                        const ArrayData = (await new RepositoryCreateCsv().showAll())
+                        return await SeachLine(ArrayData,params['name'], params['q'])
                     }
                 }
                 
@@ -33,7 +37,8 @@ export class GetInformationDatabaseUserService{
                 let result = await new SearchTablePrisma().searchByParameterFavority();
                 for await (let line of result){
                     if((line.favorite_sport).toLowerCase().split(' ').join('') == (params['name']).toLowerCase().split(' ').join('')){
-                        return new RepositoryCreateCsv().showAll()
+                        const ArrayData = (await new RepositoryCreateCsv().showAll())
+                        return await SeachLine(ArrayData,params['name'], params['q'])
                     }
                 }
             }
