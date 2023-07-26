@@ -55,4 +55,16 @@ router.get('/', async (req, res) => {
   });
 
 
+
+
+  router.use((req, res, next) => {
+    const error = new Error("Erro aplication!!");
+    next(error)
+})
+  router.use((error: any, req: any, res: any, next: any) => {
+      res.status(error.status || 500)
+      res.json({ error: error.message })
+  })
+
+
 export { router }

@@ -5,6 +5,7 @@ import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvAlreadyExists";
 
 
 
+
 export class SetInformationFileUseCase{
     constructor() {}
     async execute(csFormatted: string | undefined | null): Promise<any>{
