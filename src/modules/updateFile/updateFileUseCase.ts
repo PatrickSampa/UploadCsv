@@ -1,14 +1,13 @@
 import { userDTO } from "../../DTO/userDTO";
-import { client } from "../../database/client";
 import { RepositoryCreateCsv } from "../../repositories/prisma/prismaCreateCsvRepository";
 import { TransforToArray } from "./dataBaseHelp/TransformToArray"
-import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvAlreadyexists"
+import { CheckCsvAlreadyExists } from "./dataBaseHelp/csvAlreadyExists";
+
 
 
 export class SetInformationFileUseCase{
     constructor() {}
     async execute(csFormatted: string | undefined | null): Promise<any>{
-        
         
         const arrayUser: userDTO[] = await TransforToArray(csFormatted)
 

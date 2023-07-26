@@ -15,7 +15,7 @@ export class SetInformationUpdate{
             throw new Error('Conflict');
         }
         
-        return response.status(200).json({ message: 'Upload de arquivo concluído com sucesso.' }); 
+        return response.status(200).json(result); 
         }catch(error){
             if(error instanceof Error){
                 const errorMessage = error.message || 'Erro undefined';

@@ -3,7 +3,7 @@ import readline from 'readline';
 
 export async function CheckSomma(csv: any): Promise<boolean>{
     const lines = csv.split('\n');
-console.log(lines)
+
   // Verifica o cabeçalho
   const header = lines[0];
   if (!header.includes(',')) {
