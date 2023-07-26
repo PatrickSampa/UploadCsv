@@ -7,12 +7,13 @@ describe("Creation of information in the database", () => {
 
 
     it("It must be possible to save the data in the database in the correct way", async () =>{
-        const createUserService = new SetInformationFileUseCase();
 
         const dataInCsv: string = "name,city,country,favorite_sport\nJohn Doe,New York,USA,Basketball\nJane Smith,London,UK,Football\nMike Johnson,Paris,France,Tennis\nKaren Lee,Tokyo,Japan,Swimming\nTom Brown,Sydney,Australia,Running\nEmma Wilson,Berlin,Germany,Basketball";
 
-        const UserInsert = await createUserService.execute(dataInCsv);
-        console.log(UserInsert)
+
+        const createUserService = new SetInformationFileUseCase();
+        const UserInsert: Array<any> = await createUserService.execute(dataInCsv);
+       
         UserInsert.forEach((element: any) => {
             expect(element).toHaveProperty('id');
             expect(element).toHaveProperty('name');
